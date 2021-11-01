@@ -1,11 +1,41 @@
 import React from 'react'
+import Navbar from './Navbar/Navbar'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom"
+import FormReg from '../Main/FormAuth/FormReg/FormReg'
+
+
+
+
+
 
 export default function Header() {
   return (
-    <div>
-      <h1>шапка</h1>
-      
-    </div>
+    <Router>
+      <div>
+       <Navbar/>
+
+       <Switch>
+         
+          <Route exact path="/reg">
+          <FormReg/>
+         </Route>
+
+
+          <Route exact path="/avtor">
+            <
+          </Route>
+       
+       
+       
+       </Switch>
+
+     </div>
+    </Router>
   )
 }
 

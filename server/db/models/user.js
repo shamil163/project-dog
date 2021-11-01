@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ Animal, Role, Event, Claim, Message }) {
       this.hasMany(Animal, { foreignKey: " user_id" });
-      this.belongsTo(Role, { foreignKey: " role_id" });
+      this.hasOne(Role, { foreignKey: " role_id" });
       this.hasMany(Event, { foreignKey: " user_id" });
       this.hasMany(Claim, { foreignKey: " user_id" });
       this.hasMany(Message, { foreignKey: " user_id" });
@@ -19,13 +19,30 @@ module.exports = (sequelize, DataTypes) => {
   };
   User.init(
     {
-      name: DataTypes.STRING,
-      title: DataTypes.TEXT,
-      email: DataTypes.STRING,
-      password: DataTypes.TEXT,
-      role_id: DataTypes.INTEGER,
-      photo: DataTypes.STRING,
-      geolocation: DataTypes.TEXT,
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      title: {
+        type: DataTypes.TEXT,
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      password: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      role_id: {
+        type: DataTypes.INTEGER,
+      },
+      photo: {
+        type: DataTypes.STRING,
+      },
+      geolocation: {
+        type: DataTypes.TEXT,
+      },
     },
     {
       sequelize,
